@@ -1,5 +1,5 @@
 export default {
-  primary: "",
-  secondary: "",
-  text: "",
+  primary: '',
+  secondary: '',
+  text: '',
 };

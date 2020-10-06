@@ -1,6 +1,6 @@
-import React from "react";
-import { CharactersProvider } from './components/CharactersContext'
-import Home from "./screens/Home/Home";
+import React from 'react';
+import { CharactersProvider } from './components/CharactersContext';
+import Home from './screens/Home';
 
 export default function App() {
   return (
@@ -9,5 +9,3 @@ export default function App() {
     </CharactersProvider>
   );
 }
-
-

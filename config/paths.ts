@@ -1,3 +1,3 @@
 export default {
-  characters: "/characters",
+  characters: '/characters',
 };

@@ -1,7 +1,6 @@
-import React, { useEffect, useContext } from 'react'
-import { View, Text } from 'react-native'
+import React, { useEffect, useContext } from 'react';
+import { View, Text } from 'react-native';
 import { CharactersContext } from '../../components/CharactersContext';
-
 
 const Home = () => {
   const { characterActions, characters } = useContext(CharactersContext);
@@ -10,14 +9,14 @@ const Home = () => {
     characterActions.getList();
     return () => {
       characterActions.clear();
-    }
+    };
   }, [characterActions]);
 
   return (
     <View>
       <Text>HOME</Text>
     </View>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

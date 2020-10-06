@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 import { IQueryParams } from './interfaces';
 
 const defaultParams = {
   apikey: '9b5e63f935b69c8f68b5cedf54c97a81',
   hash: '2e8ed0d1737174b673ae2b52c756e801',
   ts: 1,
-}
+};
 
 axios.defaults.baseURL = 'https://gateway.marvel.com/v1/public';
 
@@ -14,7 +14,7 @@ const marvelAPI = {
     const params = {
       ...defaultParams,
       ...queryParams,
-    }
+    };
     return axios(path, { params });
   },
 };

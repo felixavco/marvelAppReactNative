@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { IQueryParams } from '../../helpers/interfaces';
 
 interface ICharacter {

@@ -1,5 +1,4 @@
-
-export interface IQueryParams { 
+export interface IQueryParams {
   limit?: number;
   offset?: number;
   formatType?: string;

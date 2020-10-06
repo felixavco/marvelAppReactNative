@@ -7,5 +7,4 @@ interface IComic {
 export interface IComicState {
   comics: IComic[];
   comic: IComic;
-  
 }
