@@ -1,5 +1,6 @@
 export default {
-  primary: '',
+  primary: '#be0027',
   secondary: '',
-  text: '',
+  text: '#333',
+  textWhite: '#fff',
 };

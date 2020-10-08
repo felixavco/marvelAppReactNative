@@ -28,7 +28,10 @@ const CharactersProvider: FunctionComponent = ({ children }) => {
     const { data } = await marvelAPI.get(paths.characters, params);
     dispatch({
       type: Types.SET_CHARACTERS,
-      payload: data.data.results,
+      payload: {
+        characters: data.data.results,
+        isLoading: false,
+      },
     });
   };
 
