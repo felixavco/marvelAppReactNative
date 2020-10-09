@@ -30,6 +30,7 @@
     "no-shadow": "warn",
     "jsx-quotes": "off",
     "arrow-body-style": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "quotes": "warn"
   }
 }

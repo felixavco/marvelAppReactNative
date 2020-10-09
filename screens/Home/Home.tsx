@@ -5,17 +5,30 @@ import { useNavigation } from '@react-navigation/native';
 import Loader from '../../components/Loader';
 import Card from '../../components/Card';
 import { CharactersContext } from '../../components/CharactersContext';
+import { ICharacter } from '../../components/CharactersContext/interfaces';
 
 const Home = () => {
-  const { characterActions, characters, isLoading } = useContext(CharactersContext);
+  const {
+    isLoading,
+    characters,
+    characterActions,
+  } = useContext(CharactersContext);
   const { navigate } = useNavigation();
 
   useEffect(() => {
-    characterActions.getList({ limit: 100 });
+    characterActions.getList();
     return () => {
       characterActions.clear();
     };
   }, [characterActions]);
+
+  const getNext = () => {
+    console.log('CALL NEXT');
+    // characterActions.getList({
+    //   limit: 20,
+    //   offset: 10,
+    // });
+  };
 
   const renderCharacterCard = ({ item }: { item: any }) => {
     return <Card data={item} nav={navigate} />;
@@ -25,6 +38,8 @@ const Home = () => {
     <FlatList
       data={characters}
       renderItem={renderCharacterCard}
+      keyExtractor={(item: ICharacter) => `${item.id}`}
+      onEndReached={getNext}
     />
   );
 };

@@ -1,15 +1,18 @@
 import React, { FunctionComponent } from 'react';
 import {
-  View,
   Text,
-  TouchableNativeFeedback,
-  TouchableOpacity,
+  View,
   Platform,
+  StyleSheet,
+  ImageBackground,
+  TouchableOpacity,
+  TouchableNativeFeedback,
 } from 'react-native';
-import styles from './Card.styles';
+import { colors, fonts, screens } from '../../config';
+import { ICharacter } from '../CharactersContext/interfaces';
 
 interface IProps {
-  data: any;
+  data: ICharacter;
   nav: Function;
 }
 
@@ -20,14 +23,60 @@ const Card: FunctionComponent<IProps> = ({ data, nav }) => {
       ? TouchableNativeFeedback
       : TouchableOpacity;
 
-  console.log(data);
+  const navigate = () => {
+    nav(screens.character, { character: data });
+  };
+
+  const uri = `${data.thumbnail.path}/portrait_uncanny.${data.thumbnail.extension}`;
+
   return (
-    <Touchable onPress={() => console.log('test')}>
-      <View>
-        <Text>{data.name}</Text>
+    <View style={styles.container}>
+      <View style={styles.card}>
+        <Touchable onPress={navigate}>
+          <ImageBackground
+            source={{ uri }}
+            style={styles.imageBackground}
+          >
+            <View style={styles.titleContainer}>
+              <Text style={styles.title}>{data.name}</Text>
+            </View>
+          </ImageBackground>
+        </Touchable>
       </View>
-    </Touchable>
+    </View>
   );
 };
 
 export default Card;
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  card: {
+    height: 350,
+    width: '95%',
+    marginTop: 15,
+  },
+  imageBackground: {
+    padding: 5,
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  titleContainer: {
+    bottom: 0,
+    padding: 10,
+    width: '100%',
+    position: 'absolute',
+    justifyContent: 'flex-end',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  title: {
+    fontSize: 20,
+    color: colors.textWhite,
+    fontFamily: fonts.primaryBold,
+  },
+});

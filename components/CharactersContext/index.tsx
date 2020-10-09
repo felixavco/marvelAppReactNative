@@ -11,10 +11,10 @@ const defaultState: ICharactersState = {
   searchTerm: '',
   isLoading: true,
   characterActions: {
-    getList: () => {},
-    getOne: () => {},
-    clear: () => {},
-    setFavorite: () => {},
+    getList: () => { },
+    getOne: () => { },
+    clear: () => { },
+    setFavorite: () => { },
   },
 };
 

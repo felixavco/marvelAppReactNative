@@ -5,7 +5,6 @@ import {
 } from '@react-navigation/stack';
 
 import { colors, screens } from '../config';
-import { CharactersProvider } from '../components/CharactersContext';
 
 // Screens
 import Home from '../screens/Home';
@@ -24,20 +23,18 @@ const headerOptions: StackNavigationOptions = {
 const Stack = createStackNavigator();
 
 const CharactersNavigation: FunctionComponent = () => (
-  <CharactersProvider>
-    <Stack.Navigator screenOptions={headerOptions}>
-      <Stack.Screen
-        name={screens.home}
-        component={Home}
-        options={{ title: 'Characters' }}
-      />
-      <Stack.Screen
-        name={screens.character}
-        component={Character}
-        options={{ title: 'CHARACTER' }}
-      />
-    </Stack.Navigator>
-  </CharactersProvider>
+  <Stack.Navigator screenOptions={headerOptions}>
+    <Stack.Screen
+      name={screens.home}
+      component={Home}
+      options={{ title: 'Characters' }}
+    />
+    <Stack.Screen
+      name={screens.character}
+      component={Character}
+      options={{ title: 'CHARACTER' }}
+    />
+  </Stack.Navigator>
 );
 
 export default CharactersNavigation;

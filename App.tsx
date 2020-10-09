@@ -5,6 +5,7 @@ import { useFonts } from 'expo-font';
 
 import { NavigationContainer } from '@react-navigation/native';
 import CharactersNavigation from './navigations/CharactersNavigation';
+import { CharactersProvider } from './components/CharactersContext';
 
 import { fonts } from './config';
 import Loader from './components/Loader';
@@ -22,9 +23,12 @@ const App = () => {
   }
 
   return (
-    <NavigationContainer>
-      <CharactersNavigation />
-    </NavigationContainer>
+    <CharactersProvider>
+      <NavigationContainer>
+        <CharactersNavigation />
+      </NavigationContainer>
+    </CharactersProvider>
+
   );
 };
 
