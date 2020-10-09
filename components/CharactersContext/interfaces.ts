@@ -1,9 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { IQueryParams } from '../../helpers/interfaces';
 
-interface ICharacter {
+export interface ICharacter {
+  id: number;
   name: string;
-  url: string;
+  description?: string;
+  modified?: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
 }
 
 interface IActions {

@@ -1,4 +1,6 @@
 export default {
-  home: '',
-  favorites: '',
+  home: 'HomeScreen',
+  character: 'CharacterScreen',
+  comics: 'ComicsScreen',
+  favorites: 'FavoritesScreen',
 };

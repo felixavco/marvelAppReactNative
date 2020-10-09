@@ -27,6 +27,10 @@
     "no-use-before-define": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
-    "no-shadow": "warn"
+    "no-shadow": "warn",
+    "jsx-quotes": "off",
+    "arrow-body-style": "off",
+    "object-curly-newline": "off",
+    "quotes": "warn"
   }
 }

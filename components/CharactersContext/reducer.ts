@@ -17,7 +17,7 @@ export const reducer = (
     case Types.SET_CHARACTERS:
       return {
         ...state,
-        characters: payload,
+        ...payload,
       };
 
     case Types.SET_CHARACTER:
