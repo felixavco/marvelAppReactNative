@@ -1,12 +1,5 @@
 import axios from 'axios';
-
-export interface IQueryParams {
-  limit?: number;
-  offset?: number;
-  formatType?: string;
-  orderBy?: string;
-  displayBy?: string;
-}
+import { IQueryParams } from './interfaces';
 
 const defaultParams = {
   apikey: '9b5e63f935b69c8f68b5cedf54c97a81',

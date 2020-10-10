@@ -1,12 +1,11 @@
 /* eslint-disable global-require */
 import 'react-native-gesture-handler';
 import React from 'react';
-import { Provider } from 'react-redux';
 import { useFonts } from 'expo-font';
 
 import { NavigationContainer } from '@react-navigation/native';
 import CharactersNavigation from './navigations/CharactersNavigation';
-import { store } from './store';
+import { CharactersProvider } from './components/CharactersContext';
 
 import { fonts } from './config';
 import Loader from './components/Loader';
@@ -24,11 +23,12 @@ const App = () => {
   }
 
   return (
-    <Provider store={store}>
+    <CharactersProvider>
       <NavigationContainer>
         <CharactersNavigation />
       </NavigationContainer>
-    </Provider>
+    </CharactersProvider>
+
   );
 };
 
