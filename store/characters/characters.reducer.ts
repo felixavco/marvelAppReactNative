@@ -14,7 +14,8 @@ const defaultState: ICharactersState = {
   characters: [],
   character: undefined,
   searchTerm: '',
-  isLoading: true,
+  isPageLoaded: true,
+  isLoading: false,
 };
 
 export default (state = defaultState, action: IAction) => {
@@ -22,7 +23,8 @@ export default (state = defaultState, action: IAction) => {
     case Types.SET_CHARACTERS:
       return {
         ...state,
-        ...action.payload,
+        isLoading: action.payload.isLoading,
+        characters: [...state.characters, ...action.payload.characters],
       };
 
     case Types.SET_CHARACTER:

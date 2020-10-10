@@ -21,11 +21,11 @@ const Home = () => {
   }, [characterActions]);
 
   const getNext = () => {
-    console.log('CALL NEXT');
-    // characterActions.getList({
-    //   limit: 20,
-    //   offset: 10,
-    // });
+    console.log('CALL SSSS');
+    characterActions.getList({
+      limit: 20,
+      offset: 10,
+    });
   };
 
   const renderCharacterCard = ({ item }: { item: any }) => {
@@ -34,10 +34,12 @@ const Home = () => {
 
   return isLoading ? <Loader /> : (
     <FlatList
+      numColumns={2}
       data={characters}
+      onEndReached={getNext}
+      onEndReachedThreshold={0.5}
       renderItem={renderCharacterCard}
       keyExtractor={(item: ICharacter) => `${item.id}`}
-      onEndReached={getNext}
     />
   );
 };

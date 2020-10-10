@@ -32,7 +32,8 @@ const CharactersNavigation: FunctionComponent = () => (
     <Stack.Screen
       name={screens.character}
       component={Character}
-      options={{ title: 'CHARACTER' }}
+      options={({ route }) => ({ title: route.params.character.name })}
+
     />
   </Stack.Navigator>
 );

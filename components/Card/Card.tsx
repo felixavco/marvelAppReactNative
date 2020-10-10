@@ -9,7 +9,7 @@ import {
   TouchableNativeFeedback,
 } from 'react-native';
 import { colors, fonts, screens } from '../../config';
-import { ICharacter } from '../CharactersContext/interfaces';
+import { ICharacter } from '../../store/characters/characters.interfaces';
 
 interface IProps {
   data: ICharacter;
@@ -24,7 +24,11 @@ const Card: FunctionComponent<IProps> = ({ data, nav }) => {
       : TouchableOpacity;
 
   const navigate = () => {
-    nav(screens.character, { character: data });
+    type paramsType = { character: ICharacter };
+    const params: paramsType = {
+      character: data,
+    };
+    nav(screens.character, params);
   };
 
   const uri = `${data.thumbnail.path}/portrait_uncanny.${data.thumbnail.extension}`;
@@ -51,16 +55,19 @@ export default Card;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   card: {
-    height: 350,
-    width: '95%',
+    height: 250,
+    width: '90%',
     marginTop: 15,
+    borderRadius: 10,
+    overflow: 'hidden',
+    justifyContent: 'center',
   },
   imageBackground: {
-    padding: 5,
     width: '100%',
     height: '100%',
     overflow: 'hidden',
