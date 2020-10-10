@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
 
 import Loader from '../../components/Loader';
 import Card from '../../components/Card';
-import characterActions from '../../store/characters/characters.actions';
-import { ICharacter } from '../../store/characters/characters.interfaces';
-import { IStore } from '../../store';
+import { CharactersContext } from '../../components/CharactersContext';
+import { ICharacter } from '../../components/CharactersContext/interfaces';
 
 const Home = () => {
-  const { characters, isLoading } = useSelector((state: IStore) => state.characters);
+  const {
+    isLoading,
+    characters,
+    characterActions,
+  } = useContext(CharactersContext);
   const { navigate } = useNavigation();
 
   useEffect(() => {
