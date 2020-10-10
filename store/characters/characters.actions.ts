@@ -11,7 +11,7 @@ const getList = async (params?: IQueryParams) => {
     type: Types.SET_CHARACTERS,
     payload: {
       characters: data.data.results,
-      isLoading: false,
+      isPageLoading: false,
     },
   });
 };
@@ -35,9 +35,21 @@ const setFavorite = () => {
   console.log('SET_FAV');
 };
 
+const search = (searchTerm: string) => {
+  dispatch({
+    type: Types.SET_SEARCH,
+    payload: {
+      searchTerm,
+      characters: [],
+      showSearchModal: false,
+    },
+  });
+};
+
 const charactersActions = {
   setFavorite,
   getList,
+  search,
   getOne,
   clear,
 };

@@ -8,8 +8,9 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
 } from 'react-native';
-import { colors, fonts, screens } from '../../config';
-import { ICharacter } from '../../store/characters/characters.interfaces';
+import { getImage } from '../helpers';
+import { colors, fonts, screens } from '../config';
+import { ICharacter } from '../store/characters/characters.interfaces';
 
 interface IProps {
   data: ICharacter;
@@ -31,14 +32,12 @@ const Card: FunctionComponent<IProps> = ({ data, nav }) => {
     nav(screens.character, params);
   };
 
-  const uri = `${data.thumbnail.path}/portrait_uncanny.${data.thumbnail.extension}`;
-
   return (
     <View style={styles.container}>
       <View style={styles.card}>
         <Touchable onPress={navigate}>
           <ImageBackground
-            source={{ uri }}
+            source={getImage(data.thumbnail)}
             style={styles.imageBackground}
           >
             <View style={styles.titleContainer}>

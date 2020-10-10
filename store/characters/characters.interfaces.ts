@@ -13,6 +13,7 @@ export interface ICharactersState {
   characters: ICharacter[];
   character?: ICharacter;
   searchTerm: string;
-  isPageLoaded: boolean;
+  isPageLoading: boolean;
   isLoading: boolean;
+  showSearchModal: boolean;
 }

@@ -1,20 +1,24 @@
 import React from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import { fonts } from '../../config';
+import { CharacterRouteProp } from '../../navigations/CharactersNavigation';
+import { getImage } from '../../helpers';
 
 const Character = () => {
-  const { params } = useRoute();
-  const { name, thumbnail, description } = params.character;
-  const uri = `${thumbnail.path}/portrait_uncanny.${thumbnail.extension}`;
+  const { params } = useRoute<CharacterRouteProp>();
+  const { thumbnail, description } = params.character;
 
   return (
     <View style={styles.wrapper}>
-      <Image style={styles.image} source={{ uri }} />
+      <Image style={styles.image} source={getImage(thumbnail)} />
       <View style={styles.desciptionContainer}>
         <Text style={styles.descriptionTitle}>Description:</Text>
         <Text style={styles.description}>
-          {description.length ? description : 'Description not available.'}
+          {
+            (description && description.length)
+              ? description
+              : 'Description not available.'
+          }
         </Text>
       </View>
     </View>

@@ -1,6 +1,6 @@
 export default {
   primary: '#be0027',
-  secondary: '',
+  secondary: '#002663',
   text: '#333',
   textWhite: '#fff',
 };
