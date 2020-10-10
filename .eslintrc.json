@@ -31,6 +31,8 @@
     "jsx-quotes": "off",
     "arrow-body-style": "off",
     "object-curly-newline": "off",
-    "quotes": "warn"
+    "quotes": "warn",
+    "prefer-default-export": "off",
+    "consistent-return": "off"
   }
 }
