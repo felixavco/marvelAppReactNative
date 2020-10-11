@@ -1,5 +1,5 @@
 export default {
-  characters: '/characters',
-  comics: '/comics',
-  stories: '/stories',
+  characters: (id?: string) => `/characters${id ? `/${id}` : ''}`,
+  comics: (id?: string) => `/comics${id ? `/${id}` : ''}`,
+  stories: (id?: string) => `/stories${id ? `/${id}` : ''}`,
 };

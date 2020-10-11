@@ -32,18 +32,21 @@ const searchButton = (dispatch: Function) => {
   };
 };
 
-const favoriteButton = {
-  headerRight: () => (
-    <HeaderButtons
-      HeaderButtonComponent={HeaderButton}
-    >
-      <Item
-        title='Favorite'
-        iconName='ios-heart'
-        onPress={() => console.log('Favorite')}
-      />
-    </HeaderButtons>
-  ),
+const favoriteButton = (dispatch: Function, { id, name, thumbnail }: ICharacter) => {
+  const action = { type: Types.SET_FAVORITES, payload: { id, name, thumbnail } };
+  return {
+    headerRight: () => (
+      <HeaderButtons
+        HeaderButtonComponent={HeaderButton}
+      >
+        <Item
+          title='Favorite'
+          iconName='ios-heart'
+          onPress={() => dispatch(action)}
+        />
+      </HeaderButtons>
+    ),
+  };
 };
 
 const headerOptions: StackNavigationOptions = {
@@ -82,7 +85,7 @@ const CharactersNavigation: FunctionComponent = () => {
         component={Character}
         options={({ route }) => ({
           title: route.params.character.name,
-          ...favoriteButton,
+          ...favoriteButton(dispatch, route.params.character),
         })}
 
       />

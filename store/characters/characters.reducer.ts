@@ -18,6 +18,7 @@ export const Types = {
 const defaultState: ICharactersState = {
   searchTerm: '',
   characters: [],
+  favorites: [],
   isLoading: false,
   isPageLoading: true,
   character: undefined,
@@ -36,6 +37,13 @@ export default (state = defaultState, action: IAction) => {
         ...state,
         isPageLoading,
         characters: updatedCharacters,
+      };
+    }
+    case Types.SET_FAVORITES: {
+      console.log('FAVORITE', action.payload);
+      return {
+        ...state,
+        favorites: [],
       };
     }
     case Types.SET_CHARACTER:
@@ -68,13 +76,12 @@ export default (state = defaultState, action: IAction) => {
         ...action.payload,
       };
 
-    case Types.CLEAR_SEARCH_TERM: {
+    case Types.CLEAR_SEARCH_TERM:
       return {
         ...state,
         searchTerm: '',
         isPageLoading: true,
       };
-    }
 
     default:
       return state;

@@ -11,6 +11,7 @@ export interface ICharacter {
 
 export interface ICharactersState {
   characters: ICharacter[];
+  favorites: Partial<ICharacter>[]
   character?: ICharacter;
   searchTerm: string;
   isPageLoading: boolean;

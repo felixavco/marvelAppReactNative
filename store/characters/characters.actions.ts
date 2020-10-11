@@ -19,7 +19,7 @@ interface IGetList {
 
 const getList = async ({ reset = false, params }: IGetList) => {
   try {
-    const { data } = await marvelAPI.get(paths.characters, params);
+    const { data } = await marvelAPI.get(paths.characters(), params);
     dispatch({
       type: Types.SET_CHARACTERS,
       payload: {
@@ -35,7 +35,7 @@ const getList = async ({ reset = false, params }: IGetList) => {
 
 const getOne = async (id: string) => {
   try {
-    const { data } = await marvelAPI.get(paths.characters);
+    const { data } = await marvelAPI.get(paths.characters(id));
     dispatch({
       type: Types.SET_CHARACTER,
       payload: data.data.results,
@@ -52,10 +52,6 @@ const clear = (clearOne = false) => {
   });
 };
 
-const setFavorite = () => {
-  console.log('SET_FAV');
-};
-
 const search = async (searchTerm: string) => {
   try {
     const params = {
@@ -64,7 +60,7 @@ const search = async (searchTerm: string) => {
       orderBy: 'name',
       nameStartsWith: searchTerm,
     };
-    const { data } = await marvelAPI.get(paths.characters, params);
+    const { data } = await marvelAPI.get(paths.characters(), params);
     dispatch({
       type: Types.SET_SEARCH,
       payload: {
@@ -80,7 +76,6 @@ const search = async (searchTerm: string) => {
 };
 
 const charactersActions = {
-  setFavorite,
   getList,
   search,
   getOne,
