@@ -6,6 +6,7 @@ export interface IQueryParams {
   formatType?: string;
   orderBy?: string;
   displayBy?: string;
+  nameStartsWith?: string
 }
 
 const defaultParams = {

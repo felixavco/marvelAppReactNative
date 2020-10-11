@@ -5,23 +5,44 @@ import { Types } from './characters.reducer';
 
 const { dispatch } = store;
 
-const getList = async (params?: IQueryParams) => {
-  const { data } = await marvelAPI.get(paths.characters, params);
+const setError = (err: Error) => {
   dispatch({
-    type: Types.SET_CHARACTERS,
-    payload: {
-      characters: data.data.results,
-      isPageLoading: false,
-    },
+    type: Types.SET_ERROR,
+    payload: err,
   });
 };
 
+interface IGetList {
+  reset?: boolean,
+  params?: IQueryParams,
+}
+
+const getList = async ({ reset = false, params }: IGetList) => {
+  try {
+    const { data } = await marvelAPI.get(paths.characters, params);
+    dispatch({
+      type: Types.SET_CHARACTERS,
+      payload: {
+        reset,
+        characters: data.data.results,
+        isPageLoading: false,
+      },
+    });
+  } catch (error) {
+    setError(error);
+  }
+};
+
 const getOne = async (id: string) => {
-  const { data } = await marvelAPI.get(paths.characters);
-  dispatch({
-    type: Types.SET_CHARACTER,
-    payload: data.data.results,
-  });
+  try {
+    const { data } = await marvelAPI.get(paths.characters);
+    dispatch({
+      type: Types.SET_CHARACTER,
+      payload: data.data.results,
+    });
+  } catch (error) {
+    setError(error);
+  }
 };
 
 const clear = (clearOne = false) => {
@@ -35,15 +56,27 @@ const setFavorite = () => {
   console.log('SET_FAV');
 };
 
-const search = (searchTerm: string) => {
-  dispatch({
-    type: Types.SET_SEARCH,
-    payload: {
-      searchTerm,
-      characters: [],
-      showSearchModal: false,
-    },
-  });
+const search = async (searchTerm: string) => {
+  try {
+    const params = {
+      limit: 100,
+      offset: 0,
+      orderBy: 'name',
+      nameStartsWith: searchTerm,
+    };
+    const { data } = await marvelAPI.get(paths.characters, params);
+    dispatch({
+      type: Types.SET_SEARCH,
+      payload: {
+        searchTerm,
+        characters: data.data.results,
+        showSearchModal: false,
+        isPageLoading: false,
+      },
+    });
+  } catch (error) {
+    setError(error);
+  }
 };
 
 const charactersActions = {

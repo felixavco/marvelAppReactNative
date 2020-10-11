@@ -73,7 +73,7 @@ const CharactersNavigation: FunctionComponent = () => {
         name='HomeScreen'
         component={Home}
         options={{
-          title: 'Characters',
+          title: 'Marvel App',
           ...searchButton(dispatch),
         }}
       />

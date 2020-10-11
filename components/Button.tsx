@@ -4,18 +4,18 @@ import {
   Text,
   Platform,
   StyleSheet,
+  ButtonProps,
   TouchableOpacity,
   TouchableNativeFeedback,
 } from 'react-native';
 import { colors } from '../config';
 
-interface IProps {
-  text: string;
-  onPress: Function;
+interface IProps extends ButtonProps {
+  title: string;
   color?: string;
 }
 
-const Button: FC<IProps> = ({ text, onPress, color = colors.primary }) => {
+const Button: FC<IProps> = ({ title, color = colors.primary, ...rest }) => {
   // eslint-disable-next-line operator-linebreak
   const Touchable: any =
     Platform.OS === 'android' && Platform.Version >= 21
@@ -34,12 +34,13 @@ const Button: FC<IProps> = ({ text, onPress, color = colors.primary }) => {
       color,
       fontSize: 16,
       fontWeight: 'normal',
+      textAlign: 'center',
     },
   });
   return (
-    <Touchable onPress={onPress}>
+    <Touchable {...rest}>
       <View style={styles.button}>
-        <Text style={styles.text}>{text}</Text>
+        <Text style={styles.text}>{title}</Text>
       </View>
     </Touchable>
   );
